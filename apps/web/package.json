@@ -1,0 +1,30 @@
+{
+  "name": "@platform/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc --noEmit",
+    "start": "node ./dist/index.js",
+    "dev": "node --watch ./dist/index.js",
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
+  },
+  "dependencies": {
+    "@platform/config": "*",
+    "@platform/contracts": "*",
+    "@platform/domain": "*",
+    "@platform/security": "*",
+    "@platform/ui": "*",
+    "@supabase/supabase-js": "^2.49.1",
+    "@supabase/ssr": "^0.5.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.10"
+  }
+}

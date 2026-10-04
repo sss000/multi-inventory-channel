@@ -1,0 +1,28 @@
+{
+  "name": "multichannel-inventory-control-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Multichannel Inventory Control & Truth Reconciliation Platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build:packages": "npm run build --workspace=@platform/domain && npm run build --workspace=@platform/contracts && npm run build --workspace=@platform/config && npm run build --workspace=@platform/security && npm run build --workspace=@platform/database && npm run build --workspace=@platform/integrations && npm run build --workspace=@platform/observability && npm run build --workspace=@platform/ui && npm run build --workspace=@platform/testing",
+    "build:apps": "npm run build --workspace=@platform/api && npm run build --workspace=@platform/worker && npm run build --workspace=@platform/web && npm run build --workspace=@platform/admin",
+    "build": "npm run build:packages && npm run build:apps",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run typecheck",
+    "test": "node --experimental-strip-types --test tests/**/*.test.ts",
+    "clean": "npm run clean --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.10"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
